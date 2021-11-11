@@ -56,6 +56,24 @@ int main()
 }
 
 
+char start_screen() 
+{
+  char choice;
+  again:
+  system("cls");
+  printf("Which train would you like to board?\n");
+  printf("For train1 input '1' for train2 input '2' if you are unsure press 'c' to see both trains.: ");
+  scanf("%c", &choice);
+  if (choice == '1' || choice == '2' || choice == 'c') {
+    return choice;
+  } else {
+    printf("You inputted and invalid value. \n Try AGAIN!!");
+    sleep(2);
+    goto again;
+  }
+}
+
+
 void options() {
   printf("Train1\n");
   for (int i = 0; i < 15; i++) {
@@ -65,22 +83,4 @@ void options() {
   for (int i = 0; i < 16; i++) {
     printf("%s\n", train2[i]);
   }
-}
-
-
-char start_screen() 
-{
-  char choice;
-  again:
-  system("cls");
-  printf("Which train would you like to board?\n");
-  printf("For train1 input '1' for train2 input '2' if you are unsure press 'c' to see both trains.");
-  scanf(": %c", &choice);
-  if (choice == '1' || choice == '2' || choice == 'c') {
-    return choice;
-  } else {
-    printf("You inputted and invalid value. \n Try AGAIN!!");
-    sleep(2);
-    goto again;
-  } 
 }
