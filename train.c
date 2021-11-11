@@ -1,6 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+void options();
+char start_screen();
+
 char train1[15][80] = {
   "                                        *************************************",
   "                                      ***************************************",
@@ -18,7 +21,6 @@ char train1[15][80] = {
   "I_I_I__I______GBW____=====I_I_I_I=====____GBW______I__I_I_I I GBW     I   I  ",
   "`-'O==O~=============~O==O`-'~`-'O==O~=============~O==O`-'~~o==o~~~~~~~~~~~~"
 };
-
 char train2[16][70] = {
   "                                     (@@@)     (@@@@@)              ",
   "                               (@@)     (@@@@@@@)        (@@@@@@@)  ",
@@ -38,6 +40,21 @@ char train2[16][70] = {
   "~~~^~~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~"
 
 };
+
+
+int main() 
+{
+  char choice = start_screen();
+
+  if (choice == '1') {
+    printf("train1");
+  } else if (choice == '2') {
+    printf("train2");
+  } else if (choice == 'c') {
+    options();
+  }
+}
+
 
 void options() {
   printf("Train1\n");
@@ -66,17 +83,4 @@ char start_screen()
     sleep(2);
     goto again;
   } 
-}
-
-int main() 
-{
-  char choice = start_screen();
-
-  if (choice == '1') {
-    printf("train1");
-  } else if (choice == '2') {
-    printf("train2");
-  } else if (choice == 'c') {
-    options();
-  }
 }
