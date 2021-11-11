@@ -3,6 +3,7 @@
 
 void options();
 char start_screen();
+void dispatch(char trainNum);
 
 char train1[15][80] = {
   "                                        *************************************",
@@ -21,6 +22,7 @@ char train1[15][80] = {
   "I_I_I__I______GBW____=====I_I_I_I=====____GBW______I__I_I_I I GBW     I   I  ",
   "`-'O==O~=============~O==O`-'~`-'O==O~=============~O==O`-'~~o==o~~~~~~~~~~~~"
 };
+
 char train2[16][70] = {
   "                                     (@@@)     (@@@@@)              ",
   "                               (@@)     (@@@@@@@)        (@@@@@@@)  ",
@@ -58,17 +60,18 @@ int main()
 
 char start_screen() 
 {
-  char choice;
-  again:
   system("cls");
+  char choice;
   printf("Which train would you like to board?\n");
   printf("For train1 input '1' for train2 input '2' if you are unsure press 'c' to see both trains.: ");
   scanf("%c", &choice);
+  again:
   if (choice == '1' || choice == '2' || choice == 'c') {
     return choice;
   } else {
-    printf("You inputted and invalid value. \n Try AGAIN!!");
-    sleep(2);
+    system("cls");
+    printf("\nYou inputted and invalid value. \nTry AGAIN!:");
+    scanf("%c", &choice);
     goto again;
   }
 }
