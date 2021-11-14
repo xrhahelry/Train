@@ -1,9 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void options();
 char start_screen();
-void dispatch(char trainNum);
+void dispatch_train_1();
+void dispatch_train_2();
+void options();
+void end_screen();
 
 char train1[15][80] = {
   "                                        *************************************",
@@ -22,7 +24,6 @@ char train1[15][80] = {
   "I_I_I__I______GBW____=====I_I_I_I=====____GBW______I__I_I_I I GBW     I   I  ",
   "`-'O==O~=============~O==O`-'~`-'O==O~=============~O==O`-'~~o==o~~~~~~~~~~~~"
 };
-
 char train2[16][70] = {
   "                                     (@@@)     (@@@@@)              ",
   "                               (@@)     (@@@@@@@)        (@@@@@@@)  ",
@@ -40,8 +41,8 @@ char train2[16][70] = {
   "   / ||_.--.______.--.______.--._ |---\-'-\-.-/==\-.-/==\-.-/-'/--  ",
   "  /__;^=(==)======(==)======(==)=^~^^^ ^^^^(-)^^^^(-)^^^^(-)^^^ jgs ",
   "~~~^~~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~"
-
 };
+int num = 11;
 
 
 int main() 
@@ -49,12 +50,14 @@ int main()
   char choice = start_screen();
 
   if (choice == '1') {
-    printf("train1");
+    dispatch_train_2();
   } else if (choice == '2') {
-    printf("train2");
+    dispatch_train_2();
   } else if (choice == 'c') {
     options();
   }
+
+  end_screen();
 }
 
 
@@ -86,4 +89,37 @@ void options() {
   for (int i = 0; i < 16; i++) {
     printf("%s\n", train2[i]);
   }
+}
+
+void dispatch_train_1() {
+  while (num >= 0){
+    system("cls");
+    for (int i = 0; i < 15; i++) {
+      for (int j = 0; j < num; j++){
+        printf("\t");
+      }
+      printf("%s\n", train1[i]);
+    }
+    num--;
+  }
+}
+
+void dispatch_train_2() {
+  while (num >= 0){
+    system("cls");
+    for (int i = 0; i < 16; i++) {
+      for (int j = 0; j < num; j++){
+        printf("\t");
+      }
+      printf("%s\n", train2[i]);
+    }
+    num--;
+  }
+}
+
+void end_screen() {
+  printf("The Train has reached its destination.\n");
+  printf("Hope you had an enjoyable journey.\n");
+  printf("Thank You for journeying with us.");
+  sleep(2);
 }
