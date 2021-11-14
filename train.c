@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<stdbool.h>
 
 char start_screen();
 void dispatch_train_1();
@@ -47,14 +48,19 @@ int num = 11;
 
 int main() 
 {
-  char choice = start_screen();
+  bool run = true;
+  while(run) {
+    char choice = start_screen();
 
-  if (choice == '1') {
-    dispatch_train_2();
-  } else if (choice == '2') {
-    dispatch_train_2();
-  } else if (choice == 'c') {
-    options();
+    if (choice == '1') {
+      dispatch_train_1();
+      run = false;
+    } else if (choice == '2') {
+      dispatch_train_2();
+      run = false;
+    } else if (choice == 'c') {
+      options();
+    }
   }
 
   end_screen();
@@ -121,5 +127,4 @@ void end_screen() {
   printf("The Train has reached its destination.\n");
   printf("Hope you had an enjoyable journey.\n");
   printf("Thank You for journeying with us.");
-  sleep(2);
 }
