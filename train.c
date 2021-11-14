@@ -48,20 +48,13 @@ int num = 11;
 
 int main() 
 {
-  bool run = true;
-  while(run) {
-    char choice = start_screen();
+  char choice = start_screen();
 
-    if (choice == '1') {
-      dispatch_train_1();
-      run = false;
-    } else if (choice == '2') {
-      dispatch_train_2();
-      run = false;
-    } else if (choice == 'c') {
-      options();
-    }
-  }
+  if (choice == '1') {
+    dispatch_train_1();
+  } else if (choice == '2') {
+    dispatch_train_2();
+  } 
 
   end_screen();
 }
@@ -69,19 +62,21 @@ int main()
 
 char start_screen() 
 {
-  system("cls");
-  char choice;
-  printf("Which train would you like to board?\n");
-  printf("For train1 input '1' for train2 input '2' if you are unsure press 'c' to see both trains.: ");
-  scanf("%c", &choice);
-  again:
-  if (choice == '1' || choice == '2' || choice == 'c') {
-    return choice;
-  } else {
+  bool run = true;
+  while(run){
     system("cls");
-    printf("\nYou inputted and invalid value. \nTry AGAIN!:");
+    char choice;
+    printf("Which train would you like to board?\n");
+    printf("For train1 input '1' for train2 input '2'.\n");
+    printf("Any other key will show you the options.: ");
     scanf("%c", &choice);
-    goto again;
+    printf("\n");
+    if (choice == '1' || choice == '2') {
+      return choice;
+    } else {
+      options();
+      sleep(1);
+    }
   }
 }
 
